@@ -1,0 +1,17 @@
+{
+  "updated": "2026-01-01",
+  "mulai": 6,
+  "iuran": 10000,
+  "warga": [
+    { "nama": "Contoh Nama", "blok": "A1", "iuran": [0,0,0,0,0,0,1,0,0,0,0,0], "tgl": { "6": "2026-07-15" } }
+  ],
+  "kas": [
+    { "tanggal": "2026-07-01", "uraian": "Contoh pemasukan", "kategori": "Lain-lain", "masuk": 0, "keluar": 0 }
+  ],
+  "santunan": [],
+  "pengurus": [
+    { "jabatan": "Ketua", "nama": "Isi nama pengurus", "telp": "" }
+  ],
+  "pembayaran": { "rekening": [], "catatan": "" },
+  "ttd": { "tempat": "Banyuasin" }
+}
