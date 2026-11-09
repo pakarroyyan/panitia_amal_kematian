@@ -1,0 +1,17 @@
+/* =====================================================================
+   LAYOUT: menu daftar di sisi kiri (≥768px) · logo header · warna angka
+   Hanya CSS. Tombol/ID/onclick tab tidak diubah, indikator geser tetap dipakai.
+   HP (<768px) tetap memakai bar atas + drawer.
+   ===================================================================== */
+@media screen{
+/* ---- Warna angka: kas masuk hijau, kas keluar merah ---- */
+html body #statTotalMasuk{color:#15803d!important}
+html body #statTotalKeluar{color:#c62828!important}
+
+/* ---- Logo header (menggantikan ikon masjid) ---- */
+html body header div.rounded-xl.shadow-inner{width:auto!important;height:auto!important;padding:0!important;border-radius:0!important;
+  background:transparent!important;box-shadow:none!important;display:block;flex:none}
+html body header div.rounded-xl.shadow-inner img{display:block;height:3.6rem;width:auto;
+  filter:drop-shadow(0 6px 14px rgba(0,0,0,.45)) drop-shadow(0 0 10px rgba(207,174,96,.28))}
+@media (min-width:640px){html body header div.rounded-xl.shadow-inner img{height:4.6rem}}
+}

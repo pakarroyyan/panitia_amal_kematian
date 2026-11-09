@@ -1,0 +1,60 @@
+/* =====================================================================
+   MENU HORIZONTAL DI ATAS — pil seperti contoh (aktif hijau gelap, lainnya putih bergaris tipis)
+   Hanya tampilan. Tombol/ID/onclick tab tidak diubah. HP (<768px) tetap bar atas + drawer.
+   ===================================================================== */
+@keyframes barGlow{from{background-position:0% 50%,0% 50%,0% 50%}to{background-position:100% 50%,100% 50%,100% 50%}}
+@keyframes pillGlowTop{0%,100%{box-shadow:0 8px 16px -6px rgba(6,78,59,.55),inset 0 1px 0 rgba(255,255,255,.18)}50%{box-shadow:0 10px 20px -6px rgba(6,78,59,.75),0 0 0 3px rgba(245,185,66,.3),inset 0 1px 0 rgba(255,255,255,.18)}}
+
+@media screen and (min-width:768px){
+html body>nav{overflow:hidden;border-radius:0;
+  background:linear-gradient(90deg,#e6f7ee,#fdf7e1 34%,#e0f5f0 68%,#e6f7ee)!important;background-size:300% 100%!important;
+  animation:hdrFlow 16s ease-in-out infinite alternate;
+  border-bottom:1px solid #c9e3d5!important;box-shadow:0 12px 26px -22px rgba(6,78,59,.55)!important}
+/* cahaya lembut bergeser di belakang menu */
+html body>nav::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(34% 140% at 12% 50%,rgba(16,185,129,.26),transparent 70%),radial-gradient(34% 140% at 55% 50%,rgba(245,185,66,.24),transparent 70%),radial-gradient(34% 140% at 92% 50%,rgba(45,212,191,.24),transparent 70%);
+  background-size:150% 100%;animation:barGlow 12s ease-in-out infinite alternate}
+html body>nav::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background-image:var(--pat-gr);background-size:64px 64px;opacity:.13;animation:patDrift 22s linear infinite}
+html body>nav>div.flex{position:relative;z-index:1;flex-direction:row;flex-wrap:nowrap;align-items:center;gap:.65rem;max-width:80rem;margin:0 auto;
+  padding:.8rem 1rem 1.1rem;overflow-x:auto!important;overflow-y:hidden!important;scrollbar-width:none}
+html body>nav>div.flex::-webkit-scrollbar{display:none}
+html body>nav>div.flex::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;opacity:1;
+  background-image:radial-gradient(circle,rgba(5,150,105,.6) 0 1.6px,transparent 2.6px),radial-gradient(circle,rgba(245,185,66,.9) 0 1.4px,transparent 2.4px),radial-gradient(circle,rgba(20,184,166,.6) 0 1.1px,transparent 2px);
+  background-size:83px 97px,131px 149px,57px 71px;background-position:10px 30px,60px 90px,30px 10px;animation:dotsRise 14s linear infinite}
+
+/* ---------- Tombol menu = pil ---------- */
+html body>nav .tab-btn{position:relative;isolation:isolate;flex:none;width:auto;height:2.8rem;border-radius:999px;padding:0 1.25rem;margin-left:0!important;gap:.6rem;
+  background:#fff;border:1px solid #d9e8df!important;color:#2b4338;font-weight:600;font-size:.88rem;white-space:nowrap;text-align:center;justify-content:center;overflow:visible;
+  box-shadow:0 1px 2px rgba(6,78,59,.07);
+  transition:translate .35s cubic-bezier(.34,1.56,.64,1),background-color .25s ease,border-color .25s ease,color .25s ease,box-shadow .3s ease;
+  animation:navItemIn .7s cubic-bezier(.34,1.4,.64,1) both}
+html body>nav .tab-btn:nth-of-type(1){animation-delay:1.0s}
+html body>nav .tab-btn:nth-of-type(2){animation-delay:1.1s}
+html body>nav .tab-btn:nth-of-type(3){animation-delay:1.2s}
+html body>nav .tab-btn:nth-of-type(4){animation-delay:1.3s}
+html body>nav .tab-btn:nth-of-type(5){animation-delay:1.4s}
+html body>nav .tab-btn:nth-of-type(6){animation-delay:1.5s}
+html body>nav .tab-btn i{width:auto;color:#047857;font-size:.92rem;transition:transform .4s cubic-bezier(.34,1.56,.64,1),color .25s}
+/* lapisan hijau gelap yang "tumbuh" saat menu aktif */
+html body>nav .tab-btn::before{content:"";position:absolute;inset:-1px;border-radius:inherit;z-index:-1;pointer-events:none;
+  background:linear-gradient(135deg,#065f46 0%,#064e3b 55%,#053f30 100%);opacity:0;transform:scale(.7);
+  transition:opacity .3s ease,transform .55s cubic-bezier(.34,1.56,.64,1)}
+html body>nav .tab-btn:not(.text-brand-700):hover{background:#f1fbf6;border-color:#7fd1ad!important;color:#064e3b;translate:0 -3px;box-shadow:0 10px 16px -10px rgba(6,78,59,.5)}
+html body>nav .tab-btn:not(.text-brand-700):hover i{transform:scale(1.22) rotate(-8deg)}
+html body>nav .tab-btn.text-brand-700{background:#fff;border-color:#064e3b!important;color:#fff!important;font-weight:700;
+  box-shadow:0 8px 16px -6px rgba(6,78,59,.55),inset 0 1px 0 rgba(255,255,255,.18);
+  animation-name:navItemIn,pillGlowTop;animation-duration:.7s,3s;animation-timing-function:cubic-bezier(.34,1.4,.64,1),ease-in-out;animation-iteration-count:1,infinite;animation-fill-mode:both,none}
+html body>nav .tab-btn.text-brand-700::before{opacity:1;transform:none}
+html body>nav .tab-btn.text-brand-700 i{color:#fde68a}
+html body #navInd{display:none!important}
+
+/* ---------- Konten kembali selebar semula ---------- */
+html body>main{max-width:80rem!important;margin-left:auto!important;margin-right:auto!important;padding-left:1.5rem!important;padding-right:1.5rem!important}
+html body #content-dashboard>.grid:nth-child(1)>div h3{font-size:clamp(1.05rem,1.3vw,1.32rem)!important}
+}
+@media screen and (min-width:640px) and (max-width:767px){html body>main{padding-left:1.5rem;padding-right:1.5rem}}
+@media screen and (min-width:768px) and (max-width:1023px){html body>nav>div.flex{padding-left:1.5rem;padding-right:1.5rem}}
+@media screen and (min-width:1024px){
+  html body>nav>div.flex{padding-left:2rem;padding-right:2rem}
+  html body>main{padding-left:2rem!important;padding-right:2rem!important}
+}

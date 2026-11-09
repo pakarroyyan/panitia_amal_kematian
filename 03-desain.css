@@ -1,0 +1,239 @@
+/* =====================================================================
+   LAPISAN DESAIN PREMIUM — hanya mengubah tampilan (layar). Tidak menyentuh
+   struktur, ID, event, maupun logika. Cetak/PDF tetap memakai gaya asli.
+   Palet: zamrud pekat · emas antik · gading     Huruf: Merriweather (judul) + Noto Sans (isi & angka)
+   ===================================================================== */
+@media screen{
+:root{
+  --em-950:#062a1f;--em-900:#0b3d2e;--em-800:#10523c;--em-700:#15694b;--em-600:#1a7a52;--em-100:#e2f0e8;--em-50:#f1f7f3;
+  --gold-700:#8a6a22;--gold-600:#a47f2e;--gold-500:#b8913f;--gold-400:#cfae60;--gold-300:#e0c27a;--gold-200:#ecdcaa;--gold-100:#f7efd6;--gold-50:#fbf7ea;
+  --ink:#12241b;--ink-2:#3e5247;--muted:#6a7a71;--line:#e4eae2;--paper:#fdfefc;
+  --f-body:'Noto Sans','Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;
+  --f-disp:'Merriweather',Georgia,'Times New Roman',serif;
+  --pat-g:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%23cfae60' stroke-width='1'%3E%3Crect x='20' y='20' width='40' height='40'/%3E%3Crect x='20' y='20' width='40' height='40' transform='rotate(45 40 40)'/%3E%3Ccircle cx='40' cy='40' r='9'/%3E%3Cpath d='M0 0L20 20M80 0L60 20M0 80L20 60M80 80L60 60'/%3E%3C/g%3E%3C/svg%3E");
+}
+::selection{background:var(--gold-200);color:var(--em-900)}
+
+/* ---------- Dasar ---------- */
+html body{font-family:var(--f-body);color:var(--ink);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  background:linear-gradient(180deg,#f4f9f5 0%,#eef5f0 42%,#f6f8f4 100%)!important}
+html body::after{background:radial-gradient(38% 32% at 92% 4%,rgba(207,174,96,.16),transparent 70%),
+  radial-gradient(40% 34% at 6% 92%,rgba(26,122,82,.13),transparent 70%),
+  radial-gradient(28% 24% at 55% 40%,rgba(134,239,172,.08),transparent 70%)}
+html body td,html body th,html body .tabnum,html body [id^="stat"],html body [id^="kasRpt"]{font-variant-numeric:tabular-nums lining-nums}
+html body main .uppercase{text-transform:none}
+html body main .tracking-wider{letter-spacing:.01em}
+html body :focus-visible{outline-color:rgba(184,145,63,.85)}
+html body input[type=checkbox]{accent-color:var(--em-600)}
+html body .table-container{scrollbar-width:thin;scrollbar-color:#c7d6c9 transparent}
+html body .table-container::-webkit-scrollbar{height:8px;width:8px}
+html body .table-container::-webkit-scrollbar-thumb{background:#c7d6c9;border-radius:8px}
+html body .table-container::-webkit-scrollbar-thumb:hover{background:var(--gold-400)}
+#scrollBar{background:linear-gradient(90deg,var(--em-600),var(--em-700) 55%,var(--gold-400))!important;box-shadow:0 0 10px rgba(207,174,96,.55)!important}
+
+/* ---------- Pemuatan ---------- */
+#appLoader{background:radial-gradient(60% 50% at 50% 40%,#10523c 0%,#0b3d2e 60%,#041f16 100%)!important}
+.ld-mark::before{border-color:rgba(255,255,255,.1)!important;border-top-color:var(--gold-400)!important}
+.ld-mark::after{border-color:rgba(207,174,96,.35)!important}
+.ld-text{color:rgba(246,236,201,.75)!important}
+.ld-text b{font-family:var(--f-disp);font-size:1.05rem!important;font-weight:700;letter-spacing:0!important;color:#f6ecc9!important}
+
+/* ---------- Header ---------- */
+html body header.bg-brand-800{background-image:linear-gradient(118deg,#062a1f 0%,#0b3d2e 48%,#0f4a37 100%)!important;
+  border-bottom:1px solid rgba(207,174,96,.55);
+  box-shadow:inset 0 -1px 0 rgba(255,255,255,.04),0 22px 44px -26px rgba(6,42,31,.8)}
+html body header.bg-brand-800::before{background-image:var(--pat-g);opacity:.2;background-size:64px 64px}
+html body header.bg-brand-800::after{background:radial-gradient(closest-side,rgba(207,174,96,.22),transparent)}
+html body header.bg-brand-800>div{padding-top:1.5rem;padding-bottom:1.5rem}
+html body header div.rounded-xl.shadow-inner{width:3.4rem;height:3.4rem;display:grid;place-items:center;padding:0;border-radius:16px;
+  background:linear-gradient(145deg,#f9f1d8,#e2c47d)!important;color:var(--em-900)!important;
+  box-shadow:0 0 0 1px rgba(255,255,255,.4) inset,0 10px 24px -10px rgba(0,0,0,.6),0 0 0 4px rgba(207,174,96,.22)}
+html body header h1{font-family:var(--f-disp);font-weight:700!important;font-size:1.15rem!important;line-height:1.35;letter-spacing:0!important;color:#fbf3d6}
+@media (min-width:640px){html body header h1{font-size:1.5rem!important}}
+html body header p.text-brand-100{color:rgba(236,220,170,.82)!important;font-size:.78rem!important;letter-spacing:.01em;margin-top:.2rem}
+html body #viewerBadge{background:rgba(255,255,255,.06)!important;border:1px solid rgba(207,174,96,.38)!important;border-radius:999px;color:#f3ead0;
+  padding:.45rem .95rem;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+html body #viewerBadge i{color:var(--gold-300)!important}
+html body #adminBadge{background-image:linear-gradient(135deg,#ecd9a0,#b8913f);background-color:transparent!important;color:#2a1f06!important;border-radius:999px;
+  padding:.45rem .95rem;box-shadow:0 8px 20px -10px rgba(207,174,96,.8)}
+html body #authBtn{background-image:linear-gradient(135deg,#f9f1d8,#dfc07a);color:var(--em-900)!important;border-radius:999px;padding:.55rem 1.15rem;
+  box-shadow:0 10px 22px -12px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.6)}
+html body #authBtn:hover{filter:brightness(1.05)}
+
+/* Banner draft */
+html body #draftBar{background:linear-gradient(90deg,#fbf5df,#f7efd2)!important;border-color:#e6d49a!important;color:#5a4310!important}
+html body #draftBar button.bg-amber-600{background-image:linear-gradient(135deg,#b8913f,#8a6a22);color:#fff;border-radius:12px}
+html body #draftBar button.bg-white{background-color:#fffdf5!important;border-color:#dcc47e!important;border-radius:12px}
+
+/* ---------- Navigasi ---------- */
+html body>nav{background:rgba(253,254,252,.9)!important;border-bottom:1px solid var(--line)!important;box-shadow:0 1px 0 rgba(207,174,96,.28)!important}
+html body>nav.is-stuck{box-shadow:0 14px 28px -20px rgba(11,61,46,.55),0 1px 0 rgba(207,174,96,.35)!important}
+html body .tab-btn{font-size:.8125rem;font-weight:600;letter-spacing:.005em;color:#4d5f55;padding:.7rem 1rem;border-radius:12px 12px 0 0}
+html body .tab-btn:not(.text-brand-700):hover{color:var(--em-700)}
+html body .tab-btn.text-brand-700{color:var(--em-900)!important;background:linear-gradient(to top,rgba(207,174,96,.14),transparent)}
+html body .tab-btn.text-brand-700 i{color:var(--gold-600)}
+html body #navInd{height:3px;background:linear-gradient(90deg,var(--em-600),var(--em-700) 62%,var(--gold-400))!important;box-shadow:0 0 12px rgba(26,122,82,.5)!important}
+html body #mBar{border-bottom:1px solid var(--line);box-shadow:0 1px 0 rgba(207,174,96,.3)}
+html body #mBurger{border-color:#eadfba;background:var(--gold-50)}
+html body #mBurger span{background:var(--em-900)}
+html body .mb-title{font-family:var(--f-disp);font-size:.9rem;font-weight:700;color:var(--em-900)}
+html body .mb-title i{color:var(--gold-600)}
+html body #drawer{background:linear-gradient(170deg,#0f4a37,#0b3d2e 55%,#062a1f)!important;border-right:1px solid rgba(207,174,96,.4)}
+html body #drawer::before{background-image:var(--pat-g);opacity:.1}
+html body .dr-head{border-bottom-color:rgba(207,174,96,.3)}
+html body .dr-head p:first-of-type{font-family:var(--f-disp);font-size:.95rem;font-weight:700;color:#fbf3d6}
+html body .dr-head p:last-of-type{color:rgba(236,220,170,.75)}
+html body .dr-item i{color:var(--gold-300)}
+html body .dr-item.active{background:rgba(207,174,96,.14)}
+html body .dr-item::before{background:linear-gradient(var(--gold-200),var(--gold-500))!important;box-shadow:0 0 10px rgba(207,174,96,.6)!important}
+html body .dr-foot{border-top-color:rgba(207,174,96,.25)}
+
+/* ---------- Banner info ---------- */
+html body #noticeBanner{background:linear-gradient(90deg,var(--gold-50),#f3f8f4)!important;border:1px solid #eadfba!important;border-left:3px solid var(--gold-500)!important;
+  border-radius:14px;color:var(--ink-2)!important;box-shadow:0 10px 24px -20px rgba(138,106,34,.5)}
+html body #noticeBanner i{color:var(--gold-600)!important}
+html body #noticeBanner .font-bold{color:var(--em-900)}
+
+/* ---------- Kartu & panel ---------- */
+html body main .bg-white.rounded-2xl{background:linear-gradient(180deg,#fff,#fcfdfb)!important;border:1px solid var(--line)!important;border-radius:20px!important;
+  box-shadow:0 1px 0 #fff inset,0 1px 2px rgba(6,42,31,.04),0 16px 36px -22px rgba(6,42,31,.22)!important}
+html body main h2.text-lg{font-family:var(--f-disp);font-size:1.15rem!important;font-weight:700;line-height:1.4;letter-spacing:0;color:var(--em-900)}
+html body main h3.font-bold.text-slate-800,html body main h3.font-bold.mb-2{font-family:var(--f-disp);font-size:.98rem;font-weight:700;color:var(--em-900);letter-spacing:0}
+html body main h3 i.text-brand-600{color:var(--gold-600)}
+html body main p.text-xs.text-slate-500{color:var(--muted);font-size:.8rem;line-height:1.55}
+
+/* Kartu statistik utama */
+html body #content-dashboard>.grid:nth-child(1)>div{padding:1.35rem 1.4rem;position:relative;overflow:hidden}
+html body #content-dashboard>.grid:nth-child(1)>div>div:first-child p:first-child{font-size:.8rem;font-weight:600;color:var(--muted);letter-spacing:.01em}
+html body #content-dashboard>.grid:nth-child(1)>div h3{font-family:var(--f-body);font-size:clamp(1.25rem,1.6vw,1.5rem)!important;font-weight:700;line-height:1.2;margin-top:.35rem;color:var(--ink);letter-spacing:.005em}
+html body #content-dashboard>.grid:nth-child(1)>div>div:first-child p:last-child{margin-top:.5rem}
+html body #content-dashboard>.grid:nth-child(1)>div>div:last-child{width:3.1rem;height:3.1rem;border-radius:16px;display:grid;place-items:center;font-size:1.15rem;
+  background:linear-gradient(145deg,var(--gold-50),#f1e3b6)!important;color:var(--gold-700)!important;border:1px solid #e6d49a;
+  box-shadow:0 8px 18px -12px rgba(138,106,34,.7)}
+html body #content-dashboard>.grid:nth-child(1)>div:hover{border-color:#e6d49a!important;box-shadow:0 22px 40px -22px rgba(6,42,31,.35)!important}
+html body #content-dashboard>.grid:nth-child(1)>div .text-emerald-600{color:var(--em-600)!important}
+html body #content-dashboard>.grid:nth-child(1)>div .text-rose-600{color:#b4443f!important}
+
+/* Kartu Saldo Akhir — satu-satunya elemen yang dibuat mencolok */
+html body #content-dashboard>.grid:nth-child(1)>div:nth-child(3){
+  background:radial-gradient(120% 140% at 100% 0%,rgba(207,174,96,.32),transparent 58%),linear-gradient(150deg,#0f4a37 0%,#0b3d2e 55%,#062a1f 100%)!important;
+  border-color:rgba(207,174,96,.55)!important;
+  box-shadow:0 26px 46px -24px rgba(6,42,31,.75),0 0 0 1px rgba(255,255,255,.04) inset!important}
+html body #content-dashboard>.grid:nth-child(1)>div:nth-child(3)::after{content:"";position:absolute;inset:0;background-image:var(--pat-g);background-size:64px 64px;
+  opacity:.1;pointer-events:none;-webkit-mask-image:linear-gradient(120deg,transparent 30%,#000);mask-image:linear-gradient(120deg,transparent 30%,#000)}
+html body #content-dashboard>.grid:nth-child(1)>div:nth-child(3)>*{position:relative;z-index:1}
+html body #content-dashboard>.grid:nth-child(1)>div:nth-child(3)>div:first-child p:first-child{color:rgba(236,220,170,.85)}
+html body #content-dashboard>.grid:nth-child(1)>div:nth-child(3) h3{color:#f6e4ae!important;text-shadow:0 2px 18px rgba(207,174,96,.35)}
+html body #content-dashboard>.grid:nth-child(1)>div:nth-child(3)>div:first-child p:last-child{color:rgba(255,255,255,.7)!important}
+html body #content-dashboard>.grid:nth-child(1)>div:nth-child(3)>div:last-child{background:rgba(207,174,96,.16)!important;color:var(--gold-300)!important;border-color:rgba(207,174,96,.5);box-shadow:none}
+html body #content-dashboard>.grid:nth-child(1)>div:nth-child(3):hover{border-color:rgba(224,194,122,.8)!important;box-shadow:0 30px 52px -24px rgba(6,42,31,.85)!important}
+
+/* Kartu statistik kedua */
+html body #content-dashboard>.grid:nth-child(2)>div{padding:1.1rem 1.35rem}
+html body #content-dashboard>.grid:nth-child(2)>div p:first-child{font-size:.8rem;font-weight:600;color:var(--muted)}
+html body #content-dashboard>.grid:nth-child(2)>div p:last-child{font-family:var(--f-body);font-size:1.35rem!important;font-weight:700;line-height:1.25;letter-spacing:0;margin-top:.25rem}
+html body #content-dashboard>.grid:nth-child(2)>div .text-emerald-700{color:var(--em-700)!important}
+html body #content-dashboard>.grid:nth-child(2)>div .text-amber-700{color:#946a10!important}
+html body #content-dashboard>.grid:nth-child(2)>div:hover{border-color:#e6d49a!important}
+
+/* ---------- Laporan kas ---------- */
+html body .rpt-head{border-bottom:3px double var(--gold-500)}
+html body .rpt-title{font-family:var(--f-disp);font-size:clamp(1.02rem,2.2vw,1.4rem)!important;font-weight:700;letter-spacing:.02em;line-height:1.4;color:var(--em-900)}
+html body #kasReport .rpt-head p.tracking-\[\.25em\]{color:var(--gold-600);font-weight:600}
+html body #kasReport .grid.gap-px{background:#e9efe7!important;border:1px solid var(--line)!important;border-radius:16px;overflow:hidden}
+html body #kasReport .grid.gap-px>div{padding:.95rem 1.1rem;background:linear-gradient(180deg,#fff,#fbfcfa)}
+html body #kasReport .grid.gap-px>div p:first-child{font-size:.78rem;font-weight:600;color:var(--muted)}
+html body #kasReport .grid.gap-px>div p:last-child{font-family:var(--f-body);font-size:1.12rem;font-weight:700;margin-top:.1rem}
+html body #kasReport .grid.gap-px .text-emerald-700{color:var(--em-700)!important}
+html body #kasReport .grid.gap-px .text-rose-700{color:#b4443f!important}
+html body #kasReport .grid.gap-px>div:last-child{background:linear-gradient(180deg,var(--gold-50),#f6efd7)}
+html body #kasReport .grid.gap-px>div:last-child p:last-child{color:var(--em-900)}
+
+/* ---------- Tabel ---------- */
+html body .table-container{border:1px solid var(--line)!important;border-radius:16px!important;background:#fff}
+html body thead.bg-slate-800{background:var(--em-900)}
+html body thead th{background:linear-gradient(180deg,#10523c,#0b3d2e)!important;color:#f3ead0!important;font-size:.76rem;font-weight:600;letter-spacing:.02em;
+  border-bottom:2px solid var(--gold-500);white-space:nowrap}
+html body thead th.bg-slate-900{background:linear-gradient(180deg,#0b3d2e,#062a1f)!important;color:var(--gold-200)!important}
+html body tbody{font-size:.8125rem}
+html body tbody.divide-y>tr+tr{border-color:#edf1ea}
+html body tbody tr:nth-child(even){background-color:#fafcf9}
+html body tbody tr:hover{background-color:#f0f7f2}
+html body tbody td{color:var(--ink)}
+html body tbody td.bg-slate-50{background-color:#f6faf5!important;color:var(--em-900)}
+html body tbody td.text-emerald-600{color:#15803d}
+html body tbody td.text-rose-600{color:#b4443f}
+html body tbody td.text-brand-700{color:var(--em-700)}
+html body tbody td.text-amber-700{color:#946a10}
+html body tbody td .bg-slate-100.rounded{background:#f0f5ee;border:1px solid #e0e9dd;color:var(--ink-2);border-radius:999px;padding:.12rem .65rem;font-weight:600}
+html body tbody td .bg-blue-50.text-blue-700{background:var(--gold-50);color:var(--gold-700);border-color:#ead79a;border-radius:999px}
+html body tbody td span.rounded-full{font-size:.68rem!important;letter-spacing:.05em;padding:.22rem .7rem!important;border:1px solid transparent}
+html body tbody td span.rounded-full.bg-emerald-100{background:#e4f2e9;color:#0f5132;border-color:#bfe0cc}
+html body tbody td span.rounded-full.bg-amber-100{background:#fbf3dc;color:#7a5a12;border-color:#ead79a}
+html body tbody td span.rounded-full.bg-rose-100{background:#fbe9e7;color:#8e2f2a;border-color:#f2c7c3}
+html body tbody td .fa-check.text-emerald-600{color:var(--em-600)}
+html body #santunanEmpty{color:var(--muted)}
+
+/* ---------- Tombol ---------- */
+html body button.bg-brand-600,html body button.bg-brand-700{background-image:linear-gradient(135deg,var(--em-600),#0f5a3c);color:#fff;border-radius:12px;
+  box-shadow:0 10px 20px -12px rgba(11,61,46,.85),inset 0 1px 0 rgba(255,255,255,.2)}
+html body button.bg-brand-900{background-image:linear-gradient(135deg,#0f4a37,#062a1f);color:#fbf3d6;border-radius:12px;
+  box-shadow:0 10px 20px -12px rgba(6,42,31,.9),inset 0 0 0 1px rgba(207,174,96,.4)}
+html body button.bg-slate-800{background-image:linear-gradient(135deg,#2f3f37,#17241d);color:#fff;border-radius:12px;box-shadow:0 10px 20px -12px rgba(18,36,27,.85),inset 0 1px 0 rgba(255,255,255,.1)}
+html body button.bg-brand-600:hover,html body button.bg-brand-700:hover,html body button.bg-brand-900:hover,html body button.bg-slate-800:hover{filter:brightness(1.08)}
+html body button.border.border-slate-300{background:#fff;color:var(--ink-2);border-color:#dde5da;border-radius:12px}
+html body button.border.border-slate-300:hover{background:#f3f8f2;border-color:#c9d8cb}
+html body button.text-blue-600{color:var(--em-600)}
+html body button.text-rose-600{color:#b4443f}
+html body button.bg-slate-100{background:var(--gold-50);border:1px solid #ead79a;color:var(--gold-700);border-radius:999px}
+html body button.bg-slate-100:hover{background:#f6edcb}
+
+/* ---------- Kolom cari ---------- */
+html body #searchIuran{background:#fff;border:1px solid #dde5da;border-radius:999px;padding-left:1.1rem}
+html body #searchIuran:focus{border-color:var(--em-600);box-shadow:0 0 0 4px rgba(26,122,82,.12)}
+
+/* ---------- Pengurus & pembayaran ---------- */
+html body #pengurusBody .rounded-2xl,html body #rekBody .rounded-2xl{background:linear-gradient(180deg,#fff,#fbfcfa);border:1px solid var(--line)!important;border-radius:18px!important;
+  box-shadow:0 14px 30px -22px rgba(6,42,31,.3);padding:1.15rem!important}
+html body #pengurusBody .rounded-full{width:3.2rem;height:3.2rem;background:linear-gradient(145deg,#10523c,#0b3d2e)!important;color:var(--gold-300)!important;
+  box-shadow:0 0 0 3px var(--gold-100),0 8px 18px -10px rgba(6,42,31,.8)}
+html body #pengurusBody p.text-brand-700{font-size:.78rem!important;font-weight:700;letter-spacing:.03em;color:var(--gold-700)!important}
+html body #pengurusBody p.font-bold.text-slate-900{font-family:var(--f-disp);font-size:.98rem;font-weight:700;line-height:1.4;margin-top:.1rem;color:var(--em-900)}
+html body #pengurusBody a.text-emerald-700{color:var(--em-600)!important}
+html body #rekBody p.text-brand-700{font-size:.78rem!important;font-weight:700;letter-spacing:.03em;color:var(--gold-700)!important}
+html body #rekBody p.font-mono{font-family:var(--f-body);font-size:1.3rem;font-weight:700;letter-spacing:.02em;color:var(--em-900);font-feature-settings:"lnum","tnum"}
+html body #content-pembayaran .bg-brand-50{background:linear-gradient(135deg,var(--gold-50),#f3f8f4)!important;border-color:#eadfba!important}
+html body #content-pembayaran .bg-brand-50 .bg-brand-100{background:linear-gradient(145deg,#10523c,#0b3d2e)!important;color:var(--gold-300)!important;border-radius:16px;box-shadow:0 8px 18px -10px rgba(6,42,31,.8)}
+html body #payIuran{font-family:var(--f-body);font-size:1.6rem!important;font-weight:700;line-height:1.2;color:var(--em-900)!important}
+html body #payCatatan{background:#fbf8ee!important;border-color:#eee1b8!important;line-height:1.75;color:var(--ink-2)}
+html body #iuranCard .bg-brand-50{background:var(--gold-50)!important;border-color:#eadfba!important;color:var(--gold-700)!important}
+
+/* ---------- Modal ---------- */
+html body [id$="Modal"]{background:rgba(6,42,31,.58)!important;-webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px)}
+html body [id$="Modal"]>div{position:relative;background:linear-gradient(180deg,#fff,#fbfdfa)!important;border:1px solid rgba(207,174,96,.4);border-radius:24px!important;
+  box-shadow:0 36px 80px -24px rgba(6,42,31,.6)!important}
+html body [id$="Modal"]>div::before{content:"";position:absolute;left:28px;right:28px;top:0;height:2px;border-radius:2px;background:linear-gradient(90deg,transparent,var(--gold-400),transparent)}
+html body [id$="Modal"] h3{font-family:var(--f-disp);font-size:1.12rem;font-weight:700;color:var(--em-900);line-height:1.35}
+html body [id$="Modal"] .border-b{border-color:#eef2ec!important}
+html body [id$="Modal"] label{text-transform:none;font-size:.8rem;font-weight:600;color:var(--ink-2);letter-spacing:.01em}
+html body [id$="Modal"] input[type=text],html body [id$="Modal"] input[type=password],html body [id$="Modal"] input[type=number],
+html body [id$="Modal"] input[type=date],html body [id$="Modal"] select,html body [id$="Modal"] textarea{background:#fbfcfa;border:1px solid #dde5da;border-radius:12px;color:var(--ink);padding-top:.6rem;padding-bottom:.6rem}
+html body [id$="Modal"] input:focus,html body [id$="Modal"] select:focus,html body [id$="Modal"] textarea:focus{background:#fff;border-color:var(--em-600);box-shadow:0 0 0 4px rgba(26,122,82,.12)}
+html body [id$="Modal"] .bg-slate-50{background:#f6faf5!important;border-color:var(--line)!important}
+html body [id$="Modal"] .text-brand-800{color:var(--em-900)}
+html body [id$="Modal"] .text-brand-800 i{color:var(--gold-600)}
+
+/* ---------- Toast ---------- */
+html body .toast{border-radius:16px;font-family:var(--f-body);box-shadow:0 20px 40px -18px rgba(6,42,31,.45)}
+html body .toast.success{border-left-color:var(--em-600)}
+
+/* ---------- Footer ---------- */
+html body footer.bg-white{background:linear-gradient(180deg,#0b3d2e,#062a1f)!important;border-top:1px solid rgba(207,174,96,.55)!important;color:rgba(243,234,208,.78)!important;
+  padding-top:1.5rem!important;padding-bottom:1.5rem!important;font-size:.78rem!important;letter-spacing:.02em}
+
+@media (max-width:640px){
+  html body header h1{font-size:1rem!important}
+  html body main h2.text-lg{font-size:1.05rem!important}
+  html body #content-dashboard>.grid:nth-child(1)>div h3{font-size:1.4rem!important}
+}
+}

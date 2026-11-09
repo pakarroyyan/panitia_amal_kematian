@@ -1,0 +1,90 @@
+/* =====================================================================
+   LAPISAN ANIMASI TAMBAHAN (signature) — hanya tampilan, tanpa logika.
+   Mode "kurangi gerakan" otomatis ditangani aturan reduced-motion global.
+   ===================================================================== */
+@property --ang{syntax:'<angle>';inherits:false;initial-value:0deg}
+@keyframes angSpin{to{--ang:360deg}}
+@keyframes sweepLight{0%,58%{transform:translateX(-140%) skewX(-18deg)}100%{transform:translateX(430%) skewX(-18deg)}}
+@keyframes titleShine{0%,62%{background-position:125% 0}100%{background-position:-25% 0}}
+@keyframes starSpin{to{transform:rotate(360deg)}}
+@keyframes twinkle{0%,100%{transform:scale(.25) rotate(0);opacity:0}45%,55%{transform:scale(1) rotate(45deg);opacity:1}}
+@keyframes drawLine{to{width:76px}}
+@keyframes ringPulse{0%{box-shadow:0 8px 18px -12px rgba(138,106,34,.7),0 0 0 0 rgba(207,174,96,.42)}72%,100%{box-shadow:0 8px 18px -12px rgba(138,106,34,.7),0 0 0 13px rgba(207,174,96,0)}}
+@keyframes checkPop{0%{transform:scale(0) rotate(-45deg);opacity:0}100%{transform:none;opacity:1}}
+@keyframes footRun{from{transform:translateX(-110%)}to{transform:translateX(360%)}}
+@keyframes iconNod{0%{transform:scale(.55) rotate(-24deg)}58%{transform:scale(1.28) rotate(9deg)}100%{transform:none}}
+@keyframes spk{0%{transform:translate(-50%,-50%) scale(.2) rotate(0);opacity:1}100%{transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(1) rotate(var(--rot));opacity:0}}
+
+@media screen{
+/* 1) Judul header berkilau emas, lewat pelan secara berkala */
+html body header h1{background-image:linear-gradient(100deg,#fbf3d6 0%,#fbf3d6 40%,#ffffff 48%,#e8cf8a 54%,#fbf3d6 62%,#fbf3d6 100%);
+  background-size:260% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
+  animation:titleShine 9s ease-in-out 2.6s infinite}
+
+/* 2) Ornamen bintang segi-delapan berputar sangat pelan di belakang header */
+html body header.bg-brand-800>div::after{content:"";position:absolute;right:15%;top:50%;width:190px;height:190px;margin-top:-95px;z-index:-1;pointer-events:none;opacity:.2;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill='none' stroke='%23cfae60' stroke-width='.7'%3E%3Crect x='18' y='18' width='64' height='64'/%3E%3Crect x='18' y='18' width='64' height='64' transform='rotate(45 50 50)'/%3E%3Ccircle cx='50' cy='50' r='30'/%3E%3Ccircle cx='50' cy='50' r='12'/%3E%3Cpath d='M50 6V94M6 50H94'/%3E%3C/g%3E%3C/svg%3E") center/contain no-repeat;
+  animation:starSpin 90s linear infinite}
+
+/* 3) Kilau bintang kecil berkelip di sekitar logo masjid */
+html body header div.rounded-xl.shadow-inner{position:relative}
+html body header div.rounded-xl.shadow-inner::before,html body header div.rounded-xl.shadow-inner::after{content:"";position:absolute;background:var(--gold-300);pointer-events:none;
+  clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%);animation:twinkle 3.4s ease-in-out infinite}
+html body header div.rounded-xl.shadow-inner::before{top:-8px;right:-8px;width:14px;height:14px}
+html body header div.rounded-xl.shadow-inner::after{bottom:-6px;left:-7px;width:10px;height:10px;animation-delay:1.7s}
+
+/* 4) Kartu Saldo: cahaya emas mengitari tepi + kilatan cahaya melintas */
+html body #content-dashboard>.grid:nth-child(1)>div:nth-child(3){border:1px solid transparent!important;
+  background:radial-gradient(120% 140% at 100% 0%,rgba(207,174,96,.32),transparent 58%) padding-box,linear-gradient(150deg,#0f4a37 0%,#0b3d2e 55%,#062a1f 100%) padding-box,
+  conic-gradient(from var(--ang),rgba(207,174,96,.2) 0%,rgba(207,174,96,.2) 58%,#e6cf8f 78%,#fff3c4 85%,rgba(207,174,96,.2) 100%) border-box!important;
+  animation:angSpin 7s linear infinite}
+html body #content-dashboard>.grid:nth-child(1)>div:nth-child(3):hover{border-color:transparent!important}
+html body #content-dashboard>.grid:nth-child(1)>div:nth-child(3)::before{content:"";position:absolute;top:-20%;bottom:-20%;left:0;right:auto;width:36%;z-index:0;opacity:1;border-radius:0;transition:none;
+  pointer-events:none;background:linear-gradient(100deg,transparent,rgba(255,244,200,.18),transparent);transform:translateX(-140%) skewX(-18deg);animation:sweepLight 6.5s ease-in-out 2s infinite}
+
+/* 5) Sorot emas mengikuti kursor pada kartu */
+html body #content-dashboard .bg-white.rounded-2xl,html body #pengurusBody .rounded-2xl,html body #rekBody .rounded-2xl{position:relative}
+html body #content-dashboard .bg-white.rounded-2xl::before,html body #pengurusBody .rounded-2xl::before,html body #rekBody .rounded-2xl::before{
+  content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .35s ease;
+  background:radial-gradient(280px circle at var(--mx,50%) var(--my,50%),rgba(207,174,96,.17),transparent 62%)}
+html body #content-dashboard .bg-white.rounded-2xl:hover::before,html body #pengurusBody .rounded-2xl:hover::before,html body #rekBody .rounded-2xl:hover::before{opacity:1}
+
+/* 6) Ikon kartu statistik berdenyut seperti cincin emas */
+html body #content-dashboard>.grid:nth-child(1)>div>div:last-child{animation:ringPulse 3.8s ease-out infinite}
+html body #content-dashboard>.grid:nth-child(1)>div:nth-child(2)>div:last-child{animation-delay:.6s}
+html body #content-dashboard>.grid:nth-child(1)>div:nth-child(3)>div:last-child{animation-delay:1.2s}
+html body #content-dashboard>.grid:nth-child(1)>div:nth-child(4)>div:last-child{animation-delay:1.8s}
+
+/* 7) Garis emas "tergambar" di bawah judul bagian saat tab dibuka */
+html body main h2.text-lg:not(.rpt-title){position:relative;padding-bottom:.7rem}
+html body main h2.text-lg:not(.rpt-title)::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;border-radius:2px;
+  background:linear-gradient(90deg,var(--gold-500),var(--gold-200) 70%,transparent)}
+html body .tab-content:not(.hidden) h2.text-lg:not(.rpt-title)::after{animation:drawLine 1.1s cubic-bezier(.22,1,.36,1) .3s forwards}
+
+/* 8) Kilau cahaya menyapu tombol utama saat disorot */
+html body button.bg-brand-600,html body button.bg-brand-700,html body button.bg-brand-900,html body #authBtn{position:relative;overflow:hidden}
+html body button.bg-brand-600::after,html body button.bg-brand-700::after,html body button.bg-brand-900::after,html body #authBtn::after{
+  content:"";position:absolute;top:0;bottom:0;left:0;width:45%;pointer-events:none;background:linear-gradient(100deg,transparent,rgba(255,255,255,.38),transparent);
+  transform:translateX(-170%) skewX(-20deg)}
+html body button.bg-brand-600:hover::after,html body button.bg-brand-700:hover::after,html body button.bg-brand-900:hover::after,html body #authBtn:hover::after{
+  transform:translateX(340%) skewX(-20deg);transition:transform .9s cubic-bezier(.22,1,.36,1)}
+
+/* 9) Centang iuran muncul dengan pantulan kecil */
+html body tbody td .fa-check{display:inline-block;animation:checkPop .5s cubic-bezier(.34,1.56,.64,1) both}
+
+/* 10) Ikon tab aktif "mengangguk" saat dipilih */
+html body .tab-btn.text-brand-700 i{animation:iconNod .7s cubic-bezier(.34,1.56,.64,1)}
+
+/* 11) Avatar pengurus berputar ringan saat kartu disorot */
+html body #pengurusBody .rounded-full{transition:transform .55s cubic-bezier(.34,1.56,.64,1)}
+html body #pengurusBody .rounded-2xl:hover .rounded-full{transform:rotate(-9deg) scale(1.08)}
+
+/* 12) Garis emas berjalan di tepi atas footer */
+html body footer.bg-white{position:relative;overflow:hidden}
+html body footer.bg-white::before{content:"";position:absolute;top:0;left:0;height:1px;width:28%;background:linear-gradient(90deg,transparent,#f3dc9a,transparent);animation:footRun 7s linear infinite}
+
+/* 13) Percikan emas kecil saat aksi berhasil (dibuat oleh JS) */
+.spk{position:fixed;z-index:11500;pointer-events:none;background:linear-gradient(135deg,#fff3c4,#cfae60);
+  clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%);animation:spk .95s cubic-bezier(.2,.7,.3,1) forwards}
+}
+@media print{.spk{display:none!important}}
